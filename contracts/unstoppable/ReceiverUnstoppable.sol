@@ -20,7 +20,7 @@ contract ReceiverUnstoppable is Owned, IERC3156FlashBorrower {
 
     function onFlashLoan(
         address initiator,
-        address token,
+        address token, 
         uint256 amount,
         uint256 fee,
         bytes calldata
