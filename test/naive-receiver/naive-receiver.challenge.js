@@ -38,7 +38,7 @@ describe('[Challenge] Naive receiver', function () {
 
     it('Execution', async function () {
         /** CODE YOUR SOLUTION HERE */
-        pool.connect(player)
+        pool.connect(player).flashLoan();
     });
 
     after(async function () {
