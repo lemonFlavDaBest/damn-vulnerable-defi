@@ -38,6 +38,7 @@ describe('[Challenge] Naive receiver', function () {
 
     it('Execution', async function () {
         /** CODE YOUR SOLUTION HERE */
+        pool.connect(player)
     });
 
     after(async function () {
