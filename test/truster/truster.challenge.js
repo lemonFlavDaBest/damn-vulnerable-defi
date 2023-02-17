@@ -23,7 +23,8 @@ describe('[Challenge] Truster', function () {
 
     it('Execution', async function () {
         /** CODE YOUR SOLUTION HERE */
-        //just starting my hacking
+        //just starting my hacking. I think my play is to approve the token to be spent by calling
+        //trusterlender pool then approve the DV token to be spent. then in the second transaction. we will drain
         await pool.connect(player)
     });
 
