@@ -23,7 +23,8 @@ describe('[Challenge] Truster', function () {
 
     it('Execution', async function () {
         /** CODE YOUR SOLUTION HERE */
-        //just checking my branch commits with this
+        //just starting my hacking
+        await pool.connect(player)
     });
 
     after(async function () {
