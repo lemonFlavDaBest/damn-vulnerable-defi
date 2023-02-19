@@ -27,9 +27,20 @@ describe('[Challenge] Side entrance', function () {
     it('Execution', async function () {
         /** CODE YOUR SOLUTION HERE */
         // I am going to need to code a new contract that inherits the flashloan reciver and executes the code
+        console.log("pool.address", pool.address)
         const hack = await (await ethers.getContractFactory('SideEntranceExploiter', player)).deploy(pool.address)
+        
+        const owner = await hack._owner()
+        const _sideEntranceLenderPool = await hack.sideEntranceLenderPool()
+        console.log("_sideEntranceLenderPool:", _sideEntranceLenderPool)
+        console.log("hackowner:", owner)
+        console.log("player:", player.address)
+        const hackBal = await pool.balances(hack.address)
+        console.log("hackBal:", hackBal)
         await hack.initiateFlashLoan()
+        console.log("post flashloan")
         await hack.withdraw()
+        console.log("post withdraw")
     });
 
     after(async function () {
